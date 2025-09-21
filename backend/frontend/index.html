@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Agreement AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-home"></i>
+            <span>Rental Assist</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#agreements" class="nav-item" data-page="agreements">
+                <i class="fas fa-file-contract"></i>
+                <span>Agreements</span>
+            </a>
+            <a href="#alerts" class="nav-item" data-page="alerts">
+                <i class="fas fa-bell"></i>
+                <span>Alerts</span>
+            </a>
+            <a href="#chatbot" class="nav-item" data-page="chatbot">
+                <i class="fas fa-robot"></i>
+                <span>AI Chat</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="#settings" class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#logout" class="nav-item">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="header">
+            <h1 id="page-title">Rental Assistant</h1>
+            <div class="user-info">
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notification-count">3</span>
+                </div>
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon total">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Total Agreements</span>
+                        <span class="stat-value" id="total-agreements">--</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon active">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Active Contracts</span>
+                        <span class="stat-value" id="active-contracts">--</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon expiring">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Expiring Soon</span>
+                        <span class="stat-value" id="expiring-soon">--</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon alerts">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-label">Alerts</span>
+                        <span class="stat-value" id="total-alerts">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Login Section -->
+            <div class="user-section" id="user-section">
+                <h2>Enter Your User ID</h2>
+                <div class="user-input-area">
+                    <div class="user-input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="user-id-main" placeholder="Enter your unique User ID (e.g., john123)" />
+                        <button class="btn btn-primary" onclick="setUserId()">Continue</button>
+                    </div>
+                    <p class="user-note">Your User ID will be used to keep your documents private and secure.</p>
+                </div>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="upload-section" id="upload-section" style="display: none;">
+                <div class="user-header">
+                    <h2>Upload Rental Agreement</h2>
+                    <div class="current-user">
+                        <i class="fas fa-user-circle"></i>
+                        <span>User: <strong id="current-user-display">Not set</strong></span>
+                        <button class="btn btn-secondary btn-sm" onclick="changeUser()">Change User</button>
+                    </div>
+                </div>
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag and drop your PDF file here</p>
+                        <span>or</span>
+                        <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                        <input type="file" id="file-input" accept=".pdf,.doc,.docx,.txt" style="display: none;">
+                    </div>
+                    <div class="upload-progress" id="upload-progress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <span class="progress-text" id="progress-text">Uploading...</span>
+                    </div>
+                </div>
+                <p class="upload-note">Supported formats: PDF</p>
+            </div>
+
+            <!-- Summary & Reminder Section -->
+            <div class="info-section" id="info-section" style="display: none;">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3><i class="fas fa-file-alt"></i> Document Summary</h3>
+                        <div id="document-summary" class="info-content">
+                            <p class="no-data">Upload a document to see the AI-generated summary</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-bell"></i> Important Reminders</h3>
+                        <div id="document-reminders" class="info-content">
+                            <p class="no-data">Upload a document to see important dates and reminders</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Agreements -->
+            <div class="recent-section">
+                <div class="section-header">
+                    <h2>Recent Agreements</h2>
+                    <a href="#agreements" class="view-all-link">View all</a>
+                </div>
+                <div class="agreements-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>DATE</th>
+                                <th>AGREEMENT</th>
+                                <th>PARTIES</th>
+                                <th>RENT</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-agreements">
+                            <tr class="loading-row">
+                                <td colspan="5">
+                                    <div class="loading-spinner"></div>
+                                    Loading agreements...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agreements Page -->
+        <div id="agreements-page" class="page">
+            <div class="page-header">
+                <h2>All Rental Agreements</h2>
+                <button class="btn btn-primary" onclick="showPage('dashboard')">
+                    <i class="fas fa-plus"></i> Upload New Agreement
+                </button>
+            </div>
+            <div class="agreements-grid" id="agreements-grid">
+                <div class="loading-message">
+                    <div class="loading-spinner"></div>
+                    Loading agreements...
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Page -->
+        <div id="alerts-page" class="page">
+            <div class="page-header">
+                <h2>Alerts & Notifications</h2>
+            </div>
+            <div class="alerts-container" id="alerts-container">
+                <div class="loading-message">
+                    <div class="loading-spinner"></div>
+                    Loading alerts...
+                </div>
+            </div>
+        </div>
+
+        <!-- Chatbot Page -->
+        <div id="chatbot-page" class="page">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>AI Assistant</h2>
+                    <p>Ask questions about your rental agreements</p>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hello! I'm your AI assistant. I can help you understand your rental agreements, answer questions about rent, due dates, lease terms, and more. What would you like to know?</p>
+                            <span class="message-time">Now</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <div class="chat-input">
+                        <input type="text" id="chat-input" placeholder="Ask me about your rental agreement..." />
+                        <button id="send-button" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings-page" class="page">
+            <div class="page-header">
+                <h2>Settings</h2>
+            </div>
+            <div class="settings-container">
+                <div class="setting-group">
+                    <h3>User Preferences</h3>
+                    <div class="setting-item">
+                        <label>User ID</label>
+                        <input type="text" id="user-id-input" placeholder="Enter your user ID" />
+                        <button class="btn btn-secondary" onclick="saveUserId()">Save</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h3>API Configuration</h3>
+                    <div class="setting-item">
+                        <label>Backend URL</label>
+                        <input type="text" id="api-url-input" value="http://127.0.0.1:8001" />
+                        <button class="btn btn-secondary" onclick="saveApiUrl()">Save</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h3>System Status</h3>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span>Backend Connection</span>
+                            <span class="status-indicator" id="backend-status">Checking...</span>
+                        </div>
+                        <div class="status-item">
+                            <span>AI Services</span>
+                            <span class="status-indicator" id="ai-status">Checking...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Agreement Details -->
+    <div id="agreement-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Agreement Details</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Agreement details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

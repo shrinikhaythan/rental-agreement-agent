@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-multipart
+python-dotenv
+google-cloud-storage
+google-cloud-documentai
+google-cloud-firestore
+google-cloud-aiplatform
+langchain
+langgraph
+langchain-google-vertexai

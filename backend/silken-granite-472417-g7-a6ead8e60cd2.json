@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "silken-granite-472417-g7",
+  "private_key_id": "a6ead8e60cd21ebf26e68612522c90a3c4f85223",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDqyDbB7rPHDvEn\n067dlQHrqHU9ujpbnPmm1Jz3sSxIo7YLcN+0U4vhVA8IJ1Vfq1Pjf7lGm2c/Pnnd\n5vG08owYD4qRLPn9ETafIGJdW0IOzLlgSQjJ70sCjTNTGFaX9obqPFVaSeSKEt+b\n5uQpPYAjMgzjJsQZf62zg7iGhtvTNZI4l1kiY9jQ3Aev46eKjZVpMEiwWGWhm1ze\nTd+YcqbzabQbyBUxPCP9T+fAJgHTnWpWXwJmlC41YAS2vQpkXov8t6S9Evl/Z9ai\nkU5LY8T/4P3IzmC4qUziTTaDA9cCzs+lAHu2IZhGbfr5eqe5GgRRdkq/d+ixikp2\nHdcX9dyNAgMBAAECggEACi4tz6lz0q8XbmBrrfCC4Y7PrKJJWwUavyzrdIMSdkDh\nCSx3CsjvoRDlyPb5qPkTHWOBq2ncJ34kRya3Nt8oi3eLDOH8IgjPy0Uads1Y9y7R\n3/aywpzVbhIk1lbRFGxMa9Y7ZjubhRAt8YLoxFAGISCPtf7NlIR4ifbtdqnc2NLd\n1HF/8Qsv4B41iEDED8GB8bHKsJA0UlbNF7B8dThLhXCmVv3/RsNHo6IEKpqptRfF\n8xMoBdMIFAi5AMV2yk6FXxs+YUYBlDSbZr03QhahsUeyvbteZd8eq/n+UXQHEFPd\nCGQwp6iq6q3nuw2kGt/TnDjfL+NtZKwfQ0/zKaBg8QKBgQD7X9+6zUt0jgz3oF1r\ncMjFqVrIvE/tg1JaV3lCny1GzisqA2gGfzpgyIEULw7B+r8qXtCTXIHlhFLi7DCG\nUw8CfePE9IXPTFXNTwnBwhnhSeb8m/IROhsBxKaocyM1/8d2FXNUt8IIi2sxXCr2\nikv8BboNyOEM7xotVgXMVGPVXQKBgQDvGi36fFxkDaafl68a7L4PQ4o+c6YELLAS\n2wIXzxxdcbveMxmnbyLPZe96WVIjHAGJd8LDuKbjc8nnCJkfTihmx1A8+aK7Jnba\n1WZDPznUOWA6HY8HM6X1nbyweruI548qg2Rt+NOVpRdVyoAqkkmnRQDHWx09icXb\nurTK9EIA8QKBgQDwkdCL9e1AnrHKSq8dI9MBWBKKCa50oDkwPIbQO4YZPTYR/zCP\nBzPXbAwcROzauB47boIuhVnLTdgFVAUciGDVAaX52Ao3WdbDpeCwjhI2iYOGPbhs\nxC8Ugh79FzObei5p1B2L9lC73LG5i3uSdshBaTml95lpx2pF+Q2TfzAMAQKBgQCs\n1lHSNb9bm/qMdstfPS8OPZZbGqIxdlQ47ROQPmiUq7hQIMQ0okOZhGgeGx8ivgXm\nZynk7T/GP1b9qNt3I7pUwVMhIJsfieh0u7nWdofI/0it+dwAKreW2tUhBTc2+Zwl\n8SDR1gKss9Awddc77s9LGLg9Y4G5kDP0Z/x0kSh9IQKBgHUMW2oFINIRjxUaTzue\nbgLrkg8J0pTM0sqaf1fL7NPLBa6zblINyazhyG8rlcRNmsMIJrCFyG1Cjsc13KsF\nHWZUnVC4j4ZZOUigXW72rQB+HUpO9vhyI/L1eDPvkYATPYklR6KEAlp7IbRyfmHr\nzgkPN6ANf105T8WQOCRBWg72\n-----END PRIVATE KEY-----\n",
+  "client_email": "genai-172@silken-granite-472417-g7.iam.gserviceaccount.com",
+  "client_id": "109808335567190438228",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/genai-172%40silken-granite-472417-g7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
