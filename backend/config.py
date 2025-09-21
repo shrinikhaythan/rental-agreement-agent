@@ -6,7 +6,7 @@ from pathlib import Path
 load_dotenv(find_dotenv())
 
 # Set Google Cloud credentials path explicitly
-creds_file = Path(__file__).parent / "silken-granite-472417-g7-a6ead8e60cd2.json"
+creds_file = Path(__file__).parent / "id"
 if creds_file.exists():
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = str(creds_file)
     print(f"✅ Google Cloud credentials set: {creds_file}")
@@ -40,4 +40,5 @@ if missing_vars:
     raise ValueError(f"Missing one or more required environment variables: {', '.join(missing_vars)}")
 
 # You can add other configs here, e.g., for Vertex AI models
+
 GEMINI_MODEL_NAME = "gemini-1.5-pro"
